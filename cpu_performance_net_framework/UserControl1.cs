@@ -10,6 +10,7 @@ namespace cpu_performance_net_framework
 {
     public partial class UserControlLogs : UserControl
     {
+        public static Stopwatch Stopwatch { get; } = new Stopwatch();
         public UserControlLogs()
         {
             InitializeComponent();
@@ -30,11 +31,11 @@ namespace cpu_performance_net_framework
             if (_noReentrancy.Wait(0))
             {
                 var cts = new CancellationTokenSource();
+                var wdt = startWatchdog(TimeSpan.FromSeconds(2));
                 try
                 {
-                    var wdt = startWatchdog(TimeSpan.FromSeconds(2), cts.Token);
-                    await Task.Run(() => getPerformance());
-                    await wdt;
+                    _ = Task.Run(() => getPerformance());
+                    await wdt; 
                     BeginInvoke((MethodInvoker)delegate { updateUI(); });
                 }
                 catch (TimeoutException ex)
@@ -48,13 +49,16 @@ namespace cpu_performance_net_framework
 
                 void getPerformance()
                 {
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Getting performance data");
                     cpu = (int)PerformanceCounterCPU.NextValue();
                     committed = (int)PerformanceCounterCommittedMemory.NextValue();
                     available = (int)PerformanceCounterAvailableMemory.NextValue();
-                    cts.Cancel();
+                    cts.Cancel(); // Cancel the WDT
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Performance data received");
                 }
                 void updateUI()
                 {
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: UI Updating");
                     labelCPU.Text = $"{cpu}%";
                     labelMemoryCommitted.Text = $"{committed}%";
                     labelMemoryAvailable.Text = $"{available}%";
@@ -62,15 +66,21 @@ namespace cpu_performance_net_framework
                     _colorToggle = !_colorToggle;
                     if(_colorToggle) BackColor = Color.LightCyan;
                     else BackColor = Color.LightBlue;
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: UI Updated");
                 }
-                async Task startWatchdog(TimeSpan timeout, CancellationToken token)
+                async Task startWatchdog(TimeSpan timeout)
                 {
                     try
                     {
-                        await Task.Delay(timeout, token);
+                        Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Watchdog Started");
+                        await Task.Delay(timeout, cts.Token);
+                        Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Watchdog Timed Out");
                         throw new TimeoutException();
                     }
-                    catch (TaskCanceledException) { }
+                    catch (TaskCanceledException) 
+                    {
+                        Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Watchdog Cancelled");
+                    }
                 }
             }
         }
@@ -81,10 +91,12 @@ namespace cpu_performance_net_framework
             {
                 if(PerformanceCounterCPU == null)
                 {
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initializing Performance Counters");
                     PerformanceCounterCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
                     PerformanceCounterCommittedMemory = new PerformanceCounter("Memory", "% Committed Bytes In Use");
                     PerformanceCounterAvailableMemory = new PerformanceCounter("Memory", "Available MBytes");
                     timerUpdateUI.Enabled = true;
+                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initialization complete");
                 }
             }
         }

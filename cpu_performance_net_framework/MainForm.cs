@@ -8,13 +8,16 @@ namespace cpu_performance_net_framework
     {
         public MainForm()
         {
+            UserControlLogs.Stopwatch.Start();
+            Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: MainForm CTor:");
             InitializeComponent();
         }
 
         private void buttonShowUC_Click(object sender, EventArgs e)
         {
-            BeginInvoke((MethodInvoker)delegate 
+            BeginInvoke((MethodInvoker)delegate
             {
+                Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: ShowUC Click:");
                 _instance.Show();
             });
         }
