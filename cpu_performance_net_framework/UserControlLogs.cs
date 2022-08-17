@@ -91,6 +91,7 @@ namespace cpu_performance_net_framework
                 }
             }
         }
+        private bool _colorToggle = false;
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
@@ -109,6 +110,5 @@ namespace cpu_performance_net_framework
                 }
             }
         }
-        private bool _colorToggle = false;
     }
 }
