@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace cpu_performance_net_framework
@@ -12,7 +13,10 @@ namespace cpu_performance_net_framework
 
         private void buttonShowUC_Click(object sender, EventArgs e)
         {
-            _instance.Show();
+            BeginInvoke((MethodInvoker)delegate 
+            {
+                _instance.Show();
+            });
         }
     }
 }
