@@ -1,6 +1,8 @@
 # Update UserControl on a Timer
 
-![screenshot](https://github.com/IVSoftware/cpu_performance_net_framework/blob/master/cpu_performance_net_framework/ReadMe/screenshot.png)There are a few improvements I can suggest to improve performance:
+![screenshot](https://github.com/IVSoftware/cpu_performance_net_framework/blob/master/cpu_performance_net_framework/ReadMe/screenshot.png)
+
+There are a few improvements I can suggest to improve performance:
 
 - Override the `OnVisibleChanged` of the `UserControl` to initialize. *Have the PerformanceCounters create on the first occurrence of Visible and then start the timer.*
 
