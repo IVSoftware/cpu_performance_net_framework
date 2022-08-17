@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-6.0
@@ -17,6 +18,16 @@ namespace cpu_performance_net_framework
         {
             labelCPU.Text = $"CPU : {(int)PerformanceCounterCPU.NextValue()}%";
             labelMemory.Text = $"Memory : {(int)PerformanceCounterMemory.NextValue()}%";
+            _colorToggle = !_colorToggle;
+            if(_colorToggle)
+            {
+                BackColor = Color.LightCyan;
+            }
+            else
+            {
+                BackColor = Color.LightBlue;
+            }
         }
+        private bool _colorToggle = false;
     }
 }
