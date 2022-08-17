@@ -29,45 +29,44 @@
         private void InitializeComponent()
         {
             this.buttonShowUC = new System.Windows.Forms.Button();
-            this._instance = new cpu_performance_net_framework.UserControlLogs();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // buttonShowUC
             // 
-            this.buttonShowUC.Location = new System.Drawing.Point(33, 38);
+            this.buttonShowUC.Location = new System.Drawing.Point(22, 25);
+            this.buttonShowUC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonShowUC.Name = "buttonShowUC";
-            this.buttonShowUC.Size = new System.Drawing.Size(161, 44);
+            this.buttonShowUC.Size = new System.Drawing.Size(107, 29);
             this.buttonShowUC.TabIndex = 1;
             this.buttonShowUC.Text = "Show User Control";
             this.buttonShowUC.UseVisualStyleBackColor = true;
             this.buttonShowUC.Click += new System.EventHandler(this.buttonShowUC_Click);
             // 
-            // label1
+            // panel1
             // 
-            this._instance.AutoSize = true;
-            this._instance.Location = new System.Drawing.Point(243, 38);
-            this._instance.Name = "label1";
-            this._instance.Size = new System.Drawing.Size(175, 158);
-            this._instance.TabIndex = 2;
-            this._instance.Visible = false;
+            this.panel1.Location = new System.Drawing.Point(134, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(226, 145);
+            this.panel1.TabIndex = 3;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 244);
-            this.Controls.Add(this._instance);
+            this.ClientSize = new System.Drawing.Size(408, 196);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonShowUC);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Main Form";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button buttonShowUC;
-        private cpu_performance_net_framework.UserControlLogs _instance;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

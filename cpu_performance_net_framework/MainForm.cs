@@ -12,7 +12,16 @@ namespace cpu_performance_net_framework
 
         private void buttonShowUC_Click(object sender, EventArgs e)
         {
-            _instance.Show();
+            if (!panel1.Controls.Contains(UserControlLogs.Instance))
+            {
+                panel1.Controls.Add(UserControlLogs.Instance);
+                UserControlLogs.Instance.Dock = DockStyle.Fill;
+                UserControlLogs.Instance.BringToFront();
+            }
+            else
+            {
+                UserControlLogs.Instance.BringToFront();
+            }
         }
     }
 }

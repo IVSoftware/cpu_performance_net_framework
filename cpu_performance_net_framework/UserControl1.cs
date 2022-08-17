@@ -8,10 +8,22 @@ namespace cpu_performance_net_framework
 {
     public partial class UserControlLogs : UserControl
     {
-        public UserControlLogs()
+        private static UserControlLogs _instance;
+        public static UserControlLogs Instance
+        {
+            get
+            {
+                if (_instance == null || _instance.IsDisposed)
+                    _instance = new UserControlLogs();
+                return _instance;
+            }
+        }
+
+        private UserControlLogs()
         {
             InitializeComponent();
         }
+
         private void timerUpdateUI_Tick(object sender, EventArgs e)
         {
             labelCPU.Text = $"CPU : {(int)PerformanceCounterCPU.NextValue()}%";
