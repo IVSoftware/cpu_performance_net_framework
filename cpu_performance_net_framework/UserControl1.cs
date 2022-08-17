@@ -5,9 +5,9 @@ using System.Windows.Forms;
 // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-6.0
 namespace cpu_performance_net_framework
 {
-    public partial class UserControl1 : UserControl
+    public partial class UserControlLogs : UserControl
     {
-        public UserControl1()
+        public UserControlLogs()
         {
             InitializeComponent();
         }

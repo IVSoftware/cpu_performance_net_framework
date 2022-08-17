@@ -1,6 +1,6 @@
 ﻿namespace cpu_performance_net_framework
 {
-    partial class UserControl1
+    partial class UserControlLogs
     {
         /// <summary> 
         /// Required designer variable.

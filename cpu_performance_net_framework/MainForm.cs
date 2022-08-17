@@ -12,7 +12,7 @@ namespace cpu_performance_net_framework
 
         private void buttonShowUC_Click(object sender, EventArgs e)
         {
-            label1.Show();
+            _instance.Show();
         }
     }
 }

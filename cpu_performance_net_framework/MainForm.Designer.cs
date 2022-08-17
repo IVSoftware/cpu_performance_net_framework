@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonShowUC = new System.Windows.Forms.Button();
-            this.label1 = new cpu_performance_net_framework.UserControl1();
+            this._instance = new cpu_performance_net_framework.UserControlLogs();
             this.SuspendLayout();
             // 
             // buttonShowUC
@@ -44,19 +44,19 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(243, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 158);
-            this.label1.TabIndex = 2;
-            this.label1.Visible = false;
+            this._instance.AutoSize = true;
+            this._instance.Location = new System.Drawing.Point(243, 38);
+            this._instance.Name = "label1";
+            this._instance.Size = new System.Drawing.Size(175, 158);
+            this._instance.TabIndex = 2;
+            this._instance.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 244);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this._instance);
             this.Controls.Add(this.buttonShowUC);
             this.Name = "MainForm";
             this.Text = "Main Form";
@@ -67,7 +67,7 @@
 
         #endregion
         private System.Windows.Forms.Button buttonShowUC;
-        private cpu_performance_net_framework.UserControl1 label1;
+        private cpu_performance_net_framework.UserControlLogs _instance;
     }
 }
 
