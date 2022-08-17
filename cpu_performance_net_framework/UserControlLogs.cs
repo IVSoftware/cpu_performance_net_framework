@@ -99,14 +99,19 @@ namespace cpu_performance_net_framework
             {
                 if(PerformanceCounterCPU == null)
                 {
-                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initializing Performance Counters");
-                    UserControlLogs.Stopwatch.Restart();
-                    PerformanceCounterCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-                    PerformanceCounterCommittedMemory = new PerformanceCounter("Memory", "% Committed Bytes In Use");
-                    PerformanceCounterAvailableMemory = new PerformanceCounter("Memory", "Available MBytes");
-                    timerUpdateUI.Enabled = true;
-                    Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initialization complete");
-                    UserControlLogs.Stopwatch.Restart();
+                    Task.Run(()=>
+                    {
+                        Parent?.Invoke((MethodInvoker)delegate { Parent.UseWaitCursor = true; });
+                        Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initializing Performance Counters");
+                        UserControlLogs.Stopwatch.Restart();
+                        PerformanceCounterCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+                        PerformanceCounterCommittedMemory = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+                        PerformanceCounterAvailableMemory = new PerformanceCounter("Memory", "Available MBytes");
+                        timerUpdateUI.Enabled = true;
+                        Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initialization complete");
+                        UserControlLogs.Stopwatch.Restart();
+                        Parent?.BeginInvoke((MethodInvoker)delegate { Parent.UseWaitCursor = false; });
+                    });
                 }
             }
         }
