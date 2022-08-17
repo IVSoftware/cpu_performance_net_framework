@@ -28,6 +28,7 @@ namespace cpu_performance_net_framework
         {
             labelCPU.Text = $"CPU : {(int)PerformanceCounterCPU.NextValue()}%";
             labelMemoryCommitted.Text = $"Memory : {(int)PerformanceCounterCommittedMemory.NextValue()}%";
+            labelMemoryAvailable.Text = $"Memory : {(int)performanceCounterAvailableMemory.NextValue()}%";
             _colorToggle = !_colorToggle;
             if(_colorToggle)
             {
