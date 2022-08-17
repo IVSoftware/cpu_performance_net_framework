@@ -18,6 +18,7 @@ namespace cpu_performance_net_framework
             BeginInvoke((MethodInvoker)delegate
             {
                 Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: ShowUC Click:");
+                UserControlLogs.Stopwatch.Restart();
                 _instance.Show();
             });
         }
