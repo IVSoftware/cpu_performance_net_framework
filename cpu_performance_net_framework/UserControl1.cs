@@ -12,8 +12,6 @@ namespace cpu_performance_net_framework
         {
             InitializeComponent();
         }
-        private PerformanceCounter PerformanceCounterCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        private PerformanceCounter PerformanceCounterMemory = new PerformanceCounter("Memory", "Available MBytes");
         private void timerUpdateUI_Tick(object sender, EventArgs e)
         {
             labelCPU.Text = $"CPU : {(int)PerformanceCounterCPU.NextValue()}%";
