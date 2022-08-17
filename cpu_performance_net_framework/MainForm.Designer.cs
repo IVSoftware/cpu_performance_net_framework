@@ -34,10 +34,9 @@
             // 
             // buttonShowUC
             // 
-            this.buttonShowUC.Location = new System.Drawing.Point(22, 25);
-            this.buttonShowUC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonShowUC.Location = new System.Drawing.Point(33, 38);
             this.buttonShowUC.Name = "buttonShowUC";
-            this.buttonShowUC.Size = new System.Drawing.Size(107, 29);
+            this.buttonShowUC.Size = new System.Drawing.Size(160, 45);
             this.buttonShowUC.TabIndex = 1;
             this.buttonShowUC.Text = "Show User Control";
             this.buttonShowUC.UseVisualStyleBackColor = true;
@@ -45,20 +44,22 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(134, 25);
+            this.panel1.Location = new System.Drawing.Point(201, 38);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 145);
+            this.panel1.Size = new System.Drawing.Size(339, 223);
             this.panel1.TabIndex = 3;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 196);
+            this.ClientSize = new System.Drawing.Size(612, 302);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonShowUC);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Location = new System.Drawing.Point(200, 0);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Main Form";
             this.ResumeLayout(false);
 

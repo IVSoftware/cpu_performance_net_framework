@@ -29,32 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.labelMemory = new System.Windows.Forms.Label();
+            this.labelMemoryCommitted = new System.Windows.Forms.Label();
             this.labelCPU = new System.Windows.Forms.Label();
             this.timerUpdateUI = new System.Windows.Forms.Timer(this.components);
             this.PerformanceCounterCPU = new System.Diagnostics.PerformanceCounter();
-            this.PerformanceCounterMemory = new System.Diagnostics.PerformanceCounter();
+            this.PerformanceCounterCommittedMemory = new System.Diagnostics.PerformanceCounter();
+            this.labelMemoryActive = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterCPU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterMemory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterCommittedMemory)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelMemory
+            // labelMemoryCommitted
             // 
-            this.labelMemory.AutoSize = true;
-            this.labelMemory.Location = new System.Drawing.Point(13, 57);
-            this.labelMemory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMemory.Name = "labelMemory";
-            this.labelMemory.Size = new System.Drawing.Size(44, 13);
-            this.labelMemory.TabIndex = 1;
-            this.labelMemory.Text = "Memory";
+            this.labelMemoryCommitted.AutoSize = true;
+            this.labelMemoryCommitted.Location = new System.Drawing.Point(90, 64);
+            this.labelMemoryCommitted.Name = "labelMemoryCommitted";
+            this.labelMemoryCommitted.Size = new System.Drawing.Size(65, 20);
+            this.labelMemoryCommitted.TabIndex = 1;
+            this.labelMemoryCommitted.Text = "Memory";
             // 
             // labelCPU
             // 
             this.labelCPU.AutoSize = true;
-            this.labelCPU.Location = new System.Drawing.Point(13, 20);
-            this.labelCPU.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCPU.Location = new System.Drawing.Point(90, 28);
             this.labelCPU.Name = "labelCPU";
-            this.labelCPU.Size = new System.Drawing.Size(29, 13);
+            this.labelCPU.Size = new System.Drawing.Size(42, 20);
             this.labelCPU.TabIndex = 2;
             this.labelCPU.Text = "CPU";
             // 
@@ -70,23 +69,32 @@
             this.PerformanceCounterCPU.CounterName = "% Processor Time";
             this.PerformanceCounterCPU.InstanceName = "_Total";
             // 
-            // PerformanceCounterMemory
+            // PerformanceCounterCommittedMemory
             // 
-            this.PerformanceCounterMemory.CategoryName = "Memory";
-            this.PerformanceCounterMemory.CounterName = "% Committed Bytes In Use";
+            this.PerformanceCounterCommittedMemory.CategoryName = "Memory";
+            this.PerformanceCounterCommittedMemory.CounterName = "% Committed Bytes In Use";
             // 
-            // UserControl1
+            // labelMemoryActive
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.labelMemoryActive.AutoSize = true;
+            this.labelMemoryActive.Location = new System.Drawing.Point(90, 102);
+            this.labelMemoryActive.Name = "labelMemoryActive";
+            this.labelMemoryActive.Size = new System.Drawing.Size(65, 20);
+            this.labelMemoryActive.TabIndex = 1;
+            this.labelMemoryActive.Text = "Memory";
+            // 
+            // UserControlLogs
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.Controls.Add(this.labelMemory);
+            this.Controls.Add(this.labelMemoryActive);
+            this.Controls.Add(this.labelMemoryCommitted);
             this.Controls.Add(this.labelCPU);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(129, 98);
+            this.Name = "UserControlLogs";
+            this.Size = new System.Drawing.Size(194, 151);
             ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterCPU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterMemory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounterCommittedMemory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,10 +102,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelMemory;
+        private System.Windows.Forms.Label labelMemoryCommitted;
         private System.Windows.Forms.Label labelCPU;
         private System.Windows.Forms.Timer timerUpdateUI;
         private System.Diagnostics.PerformanceCounter PerformanceCounterCPU;
-        private System.Diagnostics.PerformanceCounter PerformanceCounterMemory;
+        private System.Diagnostics.PerformanceCounter PerformanceCounterCommittedMemory;
+        private System.Windows.Forms.Label labelMemoryActive;
     }
 }

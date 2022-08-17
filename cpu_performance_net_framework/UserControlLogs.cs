@@ -27,7 +27,7 @@ namespace cpu_performance_net_framework
         private void timerUpdateUI_Tick(object sender, EventArgs e)
         {
             labelCPU.Text = $"CPU : {(int)PerformanceCounterCPU.NextValue()}%";
-            labelMemory.Text = $"Memory : {(int)PerformanceCounterMemory.NextValue()}%";
+            labelMemoryCommitted.Text = $"Memory : {(int)PerformanceCounterCommittedMemory.NextValue()}%";
             _colorToggle = !_colorToggle;
             if(_colorToggle)
             {
