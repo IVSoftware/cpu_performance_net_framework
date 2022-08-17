@@ -107,10 +107,13 @@ namespace cpu_performance_net_framework
                         PerformanceCounterCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
                         PerformanceCounterCommittedMemory = new PerformanceCounter("Memory", "% Committed Bytes In Use");
                         PerformanceCounterAvailableMemory = new PerformanceCounter("Memory", "Available MBytes");
-                        timerUpdateUI.Enabled = true;
                         Debug.WriteLine($"{UserControlLogs.Stopwatch.Elapsed}: Initialization complete");
                         UserControlLogs.Stopwatch.Restart();
-                        Parent?.BeginInvoke((MethodInvoker)delegate { Parent.UseWaitCursor = false; });
+                        Parent?.BeginInvoke((MethodInvoker)delegate 
+                        {
+                            Parent.UseWaitCursor = false;
+                            timerUpdateUI.Enabled = true;
+                        });
                     });
                 }
             }
